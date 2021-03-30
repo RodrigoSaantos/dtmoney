@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
@@ -16,7 +16,6 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
-
     }
     strong {
       display: block;
@@ -28,7 +27,7 @@ export const Container = styled.div`
 
     &.highlight-background {
       background: var(--green);
-      color: #FFF;
+      color: #fff;
     }
-  } 
+  }
 `;
