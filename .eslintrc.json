@@ -38,7 +38,9 @@
       "@typescript-eslint/ban-types": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "no-use-before-define": "off",
-      "prettier/prettier": "error",
+      "prettier/prettier": ["error", {
+       "endOfLine":"auto"
+     }],
       "import/no-duplicates": "off",
       "import/extensions": [
         "error",
