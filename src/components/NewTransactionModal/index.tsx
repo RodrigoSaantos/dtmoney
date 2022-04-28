@@ -1,11 +1,10 @@
-import { useState, FormEvent, useContext } from "react";
+import { FormEvent, useContext, useState } from "react";
 import Modal from "react-modal";
-import closeImg from "../../assets/fechar.svg";
 import incomeImg from "../../assets/entradas.svg";
+import closeImg from "../../assets/fechar.svg";
 import outcomeImg from "../../assets/saídas.svg";
-import { api } from "../../services/api";
-import { Container, TransactionTypeContainer, RadioBox } from "./styles";
 import { TransactionsContext } from "../../TransactionsContext";
+import { Container, RadioBox, TransactionTypeContainer } from "./styles";
 
 interface NewTransactionModalProps {
   isOpen: boolean;
@@ -18,7 +17,6 @@ export function NewTransactionModal({
 }: NewTransactionModalProps) {
   const [type, setType] = useState("deposit");
   const [title, setTitle] = useState("");
-  const [value, setValue] = useState(0);
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState(0);
 
@@ -27,14 +25,12 @@ export function NewTransactionModal({
   function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();
 
-    const createTransaction = {
+    createTransaction({
       title,
       amount,
-      value,
       category,
       type,
-    };
-
+    });
   }
 
   return (
@@ -55,13 +51,13 @@ export function NewTransactionModal({
       <Container onSubmit={handleCreateNewTransaction}>
         <h2>Cadastrar transação</h2>
 
-        <input 
-          placeholder="Título" 
+        <input
+          placeholder="Título"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
-        <input 
-          type="number" 
+        <input
+          type="number"
           placeholder="Valor"
           value={amount}
           onChange={(event) => setAmount(Number(event.target.value))}
@@ -93,8 +89,8 @@ export function NewTransactionModal({
           </RadioBox>
         </TransactionTypeContainer>
 
-        <input 
-          placeholder="Categoria" 
+        <input
+          placeholder="Categoria"
           value={category}
           onChange={(event) => setCategory(event.target.value)}
         />
